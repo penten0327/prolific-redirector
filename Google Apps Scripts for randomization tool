@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting to Part 2</title>
+  <script>
+    window.onload = function () {
+      const params = new URLSearchParams(window.location.search);
+      const pid = params.get("PROLIFIC_PID");
+
+      if (!pid) {
+        document.body.innerHTML = "<h3>Error: Missing Prolific ID.</h3>";
+        return;
+      }
+
+      const randomizerURL = "https://script.google.com/macros/s/AKfycbzARziDkAim_543h0VedqbT9x2uqQAxmg2KxTNhRIYbB92Dn2JIrKoPtx-LBWlulAATRQ/exec";
+      const fullURL = `${randomizerURL}?PROLIFIC_PID=${encodeURIComponent(pid)}`;
+
+      // Auto-redirect
+      window.location.href = fullURL;
+    };
+  </script>
+</head>
+<body>
+  <p>Redirecting you to Part 2 of the study…</p>
+  <p>If not redirected automatically, <a id="manualLink" href="#">click here</a>.</p>
+</body>
+</html>
